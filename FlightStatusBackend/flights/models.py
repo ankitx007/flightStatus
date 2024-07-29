@@ -1,0 +1,41 @@
+# flights/models.py
+from django.db import models
+
+class Flight(models.Model):
+    flight_date = models.DateField(null=True, blank=True)
+    number = models.CharField(max_length=10, default='')
+    iata = models.CharField(max_length=10, default='')
+    icao = models.CharField(max_length=10, default='')
+    status = models.CharField(max_length=20, default='scheduled')
+    airline = models.CharField(max_length=100, default='')
+    departure_airport = models.CharField(max_length=100, default='')
+    departure_city = models.CharField(max_length=100, default='', null=True, blank=True)
+    departure_iata = models.CharField(max_length=10, default='')
+    departure_icao = models.CharField(max_length=10, default='')
+    departure_terminal = models.CharField(max_length=10, default='', null=True, blank=True)
+    departure_gate = models.CharField(max_length=10, default='', null=True, blank=True)
+    departure_scheduled = models.DateTimeField(null=True, blank=True)
+    departure_estimated = models.DateTimeField(null=True, blank=True)
+    departure_actual = models.DateTimeField(null=True, blank=True)
+    departure_runway = models.DateTimeField(null=True, blank=True)
+    arrival_airport = models.CharField(max_length=100, default='')
+    arrival_city = models.CharField(max_length=100, default='', null=True, blank=True)
+    arrival_iata = models.CharField(max_length=10, default='')
+    arrival_icao = models.CharField(max_length=10, default='')
+    arrival_terminal = models.CharField(max_length=10, default='', null=True, blank=True)
+    arrival_gate = models.CharField(max_length=10, default='', null=True, blank=True)
+    arrival_baggage = models.CharField(max_length=10, default='', null=True, blank=True)
+    arrival_scheduled = models.DateTimeField(null=True, blank=True)
+    arrival_estimated = models.DateTimeField(null=True, blank=True)
+    arrival_actual = models.DateTimeField(null=True, blank=True)
+    arrival_runway = models.DateTimeField(null=True, blank=True)
+    delay = models.IntegerField(null=True, blank=True)
+    codeshare_airline_name = models.CharField(max_length=100, default='', null=True, blank=True)
+    codeshare_airline_iata = models.CharField(max_length=10, default='', null=True, blank=True)
+    codeshare_airline_icao = models.CharField(max_length=10, default='', null=True, blank=True)
+    codeshare_flight_number = models.CharField(max_length=10, default='', null=True, blank=True)
+    codeshare_flight_iata = models.CharField(max_length=10, default='', null=True, blank=True)
+    codeshare_flight_icao = models.CharField(max_length=10, default='', null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.airline} Flight {self.number}'
